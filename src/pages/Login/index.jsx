@@ -6,7 +6,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
 
   const handleUsername = (event) => {
-    setEmail(event.target.value);
+    setUsername(event.target.value);
   };
 
   const handlePassword = (event) => {
@@ -36,11 +36,45 @@ const Login = () => {
 
 const Signup = () => {
   const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
 
-  return (
+  const handleName = (event) => {
+    setName(event.target.value);
+  };
 
+  const handleEmail = (event) => {
+    setEmail(event.target.value);
+  };
+
+  const handlePassword = (event) => {
+    setPassword(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(`Name: ${name}, Email: ${email}, Password: ${password}`);
+  };
+
+  return (
+    <div>
+      <h2>Signup</h2>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label>Name</label>
+          <input type="text" value={name} onChange={handleName} />
+        </div>
+        <div>
+          <label>Email</label>
+          <input type="email" value={email} onChange={handleEmail} />
+        </div>
+        <div>
+          <h2>Password</h2>
+          <input type="password" value={password} onChange={handlePassword} />
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
   );
 };
 
