@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-
     "test": "jest ",
     "connect": "node db/setup.js",
     "dev": "nodemon -L index.js",
@@ -22,14 +21,11 @@
     "pg": "^8.9.0",
     "supertest": "^6.3.3"
   },
-  "devDependencies": {    
+  "devDependencies": {
     "jest": "^29.4.3",
     "jest-each": "^29.4.3",
     "jest-environment-jsdom": "^29.4.3",
     "jest-fetch-mock": "^3.0.3",
     "nodemon": "^2.0.20"
-
   }
 }
-  
-
