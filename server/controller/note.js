@@ -101,7 +101,7 @@ async function returnPostNoteByPrivate(req, res) {
 
 
     try {
-        const result = await Note.getByPublic(isPublic, user_id)
+        const result = await Note.getByPrivate(isPublic, user_id)
         res.status(200).json(result)
     } catch (err) {
         res.status(404).json({
