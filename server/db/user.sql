@@ -6,5 +6,6 @@ CREATE TABLE users (
     password VARCHAR(255) NOT NULL,
     user_email VARCHAR(255) NOT NULL,
     profile_pic VARCHAR(255),
-    isAdmin BOOLEAN DEFAULT FALSE NOT NULL
+    isAdmin BOOLEAN DEFAULT FALSE NOT NULL,
+    PRIMARY KEY(user_id)
 );
