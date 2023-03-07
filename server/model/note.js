@@ -86,4 +86,4 @@ class Note {
 
 }
 
-module.exports = { Marketplace };
+module.exports = { Note };

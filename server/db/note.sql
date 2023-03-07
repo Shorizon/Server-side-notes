@@ -1,4 +1,4 @@
-CREATE TABLE notes (
+CREATE TABLE note (
     note_id SERIAL NOT NULL UNIQUE,
     PRIMARY KEY (note_id),
     note_title VARCHAR(255) NOT NULL,
