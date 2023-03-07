@@ -27,7 +27,7 @@ async function deletePostNote(req, res) {
 
     try {
 
-        const toDelete = await Marketplace.getById(data)
+        const toDelete = await Note.getById(data)
         //console.log(toDelete)
         if (toDelete) {
             //console.log("deleting")
@@ -62,4 +62,55 @@ async function returnPostNote(req, res) {
 
 }
 
-module.exports = { createPostNote, deletePostNote, returnPostNote }
+async function returnPostNoteByCategory(req, res) {
+
+    const category = req.body.category
+
+    try {
+        const result = await Note.getByCategory(category)
+        res.status(200).json(result)
+    } catch (err) {
+        res.status(404).json({
+            error: true,
+            message: err.message
+        })
+    }
+
+}
+
+async function returnPostNoteByPublic(req, res) {
+
+    const isPublic = true
+
+    try {
+        const result = await Note.getByPublic(isPublic)
+        res.status(200).json(result)
+    } catch (err) {
+        res.status(404).json({
+            error: true,
+            message: err.message
+        })
+    }
+
+}
+
+async function returnPostNoteByPrivate(req, res) {
+
+    const user_id = req.body.user_id
+    const isPublic = false
+
+
+    try {
+        const result = await Note.getByPublic(isPublic, user_id)
+        res.status(200).json(result)
+    } catch (err) {
+        res.status(404).json({
+            error: true,
+            message: err.message
+        })
+    }
+
+}
+
+
+module.exports = { createPostNote, deletePostNote, returnPostNote, returnPostNoteByCategory, returnPostNoteByPublic, returnPostNoteByPrivate }
