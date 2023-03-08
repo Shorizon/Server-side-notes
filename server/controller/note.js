@@ -113,4 +113,22 @@ async function returnPostNoteByPrivate(req, res) {
 }
 
 
-module.exports = { createPostNote, deletePostNote, returnPostNote, returnPostNoteByCategory, returnPostNoteByPublic, returnPostNoteByPrivate }
+
+async function returnCategoriesNumber(req, res) {
+
+
+    try {
+        const result = await Note.getAllCategories()
+        res.status(200).json(result)
+    } catch (err) {
+        res.status(404).json({
+            error: true,
+            message: err.message
+        })
+    }
+
+}
+
+
+
+module.exports = { createPostNote, deletePostNote, returnPostNote, returnPostNoteByCategory, returnPostNoteByPublic, returnPostNoteByPrivate, returnCategoriesNumber }

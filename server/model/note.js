@@ -125,6 +125,18 @@ class Note {
     }
 
 
+    static async getAllCategories() {
+
+        try {
+            const response = await client.query("SELECT  DISTINCT note_category FROM note WHERE ispublic = true")
+            return response.rows
+        } catch (err) {
+            return ({
+                error: true,
+                message: err.message
+            })
+        }
+    }
 
 }
 
