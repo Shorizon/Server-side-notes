@@ -4,7 +4,7 @@ const noteRouter = Router()
 
 
 noteRouter.get("/forum", returnCategoriesNumber)
-noteRouter.post("/forum/:category", returnPostNoteByCategory)
+noteRouter.get("/forum/:category", returnPostNoteByCategory)
 noteRouter.post("/public", returnPostNoteByPublic)
 noteRouter.post("/private", returnPostNoteByPrivate)
 noteRouter.post("/create", createPostNote)
