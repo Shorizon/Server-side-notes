@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import { NavBar, SecureRoot } from './components'
+import { NavBar, SecureRoute } from './components'
 import { Create, Forum, Home, PublicNote } from './pages'
 
 function App() {
