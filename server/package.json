@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest ",
+    "test": "jest --watchAll",
     "connect": "node db/setup.js",
     "dev": "nodemon -L index.js",
-    "start": "node index.js"
+    "start": "node index.js",
+    "coverage": "jest --coverage"
   },
   "keywords": [],
   "author": "",
