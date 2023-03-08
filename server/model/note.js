@@ -85,7 +85,7 @@ class Note {
 
         try {
             const response = await client.query("SELECT * FROM note WHERE note_category = $1 AND ispublic = true", [category])
-            //console.log(response.rows[0])
+            console.log(response.rows[0])
             return response.rows[0]
         } catch (err) {
             return ({
