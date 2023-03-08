@@ -84,7 +84,7 @@ class Note {
     static async getByCategory(category) {
 
         try {
-            const response = await client.query("SELECT * FROM users WHERE note_category = $1;", [category])
+            const response = await client.query("SELECT * FROM note WHERE note_category = $1;", [category])
             //console.log(response.rows[0])
             return response.rows[0]
         } catch (err) {
@@ -98,7 +98,7 @@ class Note {
     static async getByPublic(isPublic) {
 
         try {
-            const response = await client.query("SELECT * FROM users WHERE isPublic = $1;", [isPublic])
+            const response = await client.query("SELECT * FROM note WHERE ispublic = $1;", [isPublic])
             //console.log(response.rows[0])
             return response.rows[0]
         } catch (err) {
@@ -113,9 +113,9 @@ class Note {
     static async getByPrivate(isPublic, user_id) {
 
         try {
-            const response = await client.query("SELECT * FROM users (WHERE isPublic = $1 AND user_id = $2;", [isPublic, user_id])
+            const response = await client.query("SELECT * FROM note WHERE ispublic = $1 AND user_id = $2;", [isPublic, user_id])
             //console.log(response.rows[0])
-            return response.rows[0]
+            return response.rows
         } catch (err) {
             return ({
                 error: true,
@@ -125,6 +125,18 @@ class Note {
     }
 
 
+    static async getAllCategories() {
+
+        try {
+            const response = await client.query("SELECT  DISTINCT note_category FROM note WHERE ispublic = true")
+            return response.rows
+        } catch (err) {
+            return ({
+                error: true,
+                message: err.message
+            })
+        }
+    }
 
 }
 
