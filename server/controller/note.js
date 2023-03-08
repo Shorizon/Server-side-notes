@@ -26,13 +26,10 @@ async function deletePostNote(req, res) {
     const data = parseInt(req.body.note_id);
 
     try {
-
         const toDelete = await Note.getById(data)
-        //console.log(toDelete)
+
         if (toDelete) {
-            //console.log("deleting")
             await Note.destroy(data)
-            //console.log("deleted")
             res.status(200).json({ message: "post deleted successfully" })
         } else {
             throw new Error("cannot locate post with this ID")

@@ -84,7 +84,7 @@ class Note {
     static async getByCategory(category) {
 
         try {
-            const response = await client.query("SELECT * FROM note WHERE note_category = $1;", [category])
+            const response = await client.query("SELECT * FROM note WHERE note_category = $1 AND ispublic = true", [category])
             //console.log(response.rows[0])
             return response.rows[0]
         } catch (err) {
