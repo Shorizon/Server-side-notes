@@ -61,7 +61,8 @@ async function returnPostNote(req, res) {
 
 async function returnPostNoteByCategory(req, res) {
 
-    const category = req.body.category
+    const category = req.params.category
+    console.log(category)
 
     try {
         const result = await Note.getByCategory(category)

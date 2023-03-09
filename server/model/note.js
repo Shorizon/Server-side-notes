@@ -98,7 +98,6 @@ class Note {
 
         try {
             const response = await client.query("SELECT * FROM note WHERE ispublic = $1;", [isPublic])
-            //console.log(response.rows[0])
             return response.rows[0]
         } catch (err) {
             return ({
@@ -113,7 +112,6 @@ class Note {
 
         try {
             const response = await client.query("SELECT * FROM note WHERE ispublic = $1 AND user_id = $2;", [isPublic, user_id])
-            //console.log(response.rows[0])
             return response.rows
         } catch (err) {
             return ({
