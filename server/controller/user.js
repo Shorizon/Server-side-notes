@@ -21,6 +21,8 @@ async function registerUser(req, res) {
 async function loginUser(req, res) {
     const data = req.body
 
+    console.log(data)
+
     try {
         if (["username", "password"].every(key => Object.hasOwn(data, key))) {
             const token = await User.login(data)
