@@ -1,5 +1,5 @@
 
-import { Comment } from "../model/comment";
+const { Comment } = require("../model/comment");
 
 
 async function createNoteComment(req, res) {
@@ -24,7 +24,9 @@ async function createNoteComment(req, res) {
 
 async function returnNoteComment(req, res) {
 
-    const note = req.params.note_id
+    const note = req.params.id
+
+    console.log(note)
 
     try {
 
@@ -39,4 +41,4 @@ async function returnNoteComment(req, res) {
 
 }
 
-module.exports = { createNoteComment }
+module.exports = { createNoteComment, returnNoteComment }
