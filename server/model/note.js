@@ -98,7 +98,7 @@ class Note {
 
         try {
             const response = await client.query("SELECT * FROM note WHERE ispublic = $1;", [isPublic])
-            return response.rows[0]
+            return response.rows
         } catch (err) {
             return ({
                 error: true,
