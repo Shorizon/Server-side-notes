@@ -4,7 +4,7 @@ async function registerUser(req, res) {
     const data = req.body
 
     try {
-        if (["username", "password", "email", "img_url"].every(key => Object.hasOwn(data, key))) {
+        if (["username", "password", "email"].every(key => Object.hasOwn(data, key))) {
             const user = await User.create(data)
             res.status(201).json({ message: "User succesfully registered" })
         } else {
@@ -39,7 +39,7 @@ async function loginUser(req, res) {
 }
 
 async function findById(req, res) {
-    const data = parseInt(req.body.user_id)
+    const data = parseInt(req.params.id)
 
     try {
         if (data) {
