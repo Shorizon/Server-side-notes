@@ -3,6 +3,7 @@ const User = require("../model/user")
 async function registerUser(req, res) {
     const data = req.body
 
+    console.log(data)
     try {
         if (["username", "password", "email"].every(key => Object.hasOwn(data, key))) {
             const user = await User.create(data)
