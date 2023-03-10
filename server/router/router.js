@@ -5,7 +5,8 @@ const router = Router()
 
 router.post("/register", registerUser)
 router.post("/login", loginUser)
-router.post("/user", findById)
+router.get("/user/:id", findById)
+
 
 
 module.exports = router

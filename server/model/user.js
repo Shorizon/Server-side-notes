@@ -17,7 +17,6 @@ class User {
 
         try {
             const response = await client.query("SELECT * FROM users WHERE user_id = $1;", [id])
-            //console.log(response.rows[0])
             return response.rows[0]
         } catch (err) {
             return ({
@@ -53,7 +52,7 @@ class User {
         }
     }
 
-    static async create({ username, password, email, img_url }) {
+    static async create({ username, password, email }) {
 
         if (!username || !password || !email) {
             throw new Error("Please provide both an username and password")
@@ -65,9 +64,7 @@ class User {
         }
         try {
             const hashedPassword = await bcrypt.hash(password, Number(process.env.SALT))
-            if (img_url != undefined) {
-                const response = await client.query("INSERT INTO users (username, password, user_email,profile_pic ) VALUES ($1, $2, $3, $4);", [username, hashedPassword, email, img_url])
-            }
+            const response = await client.query("INSERT INTO users (username, password, user_email) VALUES ($1, $2, $3);", [username, hashedPassword, email])
             return ({
                 message: "User registration successful"
             })
